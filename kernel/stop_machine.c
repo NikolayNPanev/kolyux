@@ -567,6 +567,7 @@ static struct smp_hotplug_thread cpu_stop_threads = {
 
 static int __init cpu_stop_init(void)
 {
+	printf("Something fucked up real bad");
 	unsigned int cpu;
 
 	for_each_possible_cpu(cpu) {
@@ -621,6 +622,7 @@ int stop_machine_cpuslocked(cpu_stop_fn_t fn, void *data,
 
 int stop_machine(cpu_stop_fn_t fn, void *data, const struct cpumask *cpus)
 {
+	printf("I am become dead");
 	int ret;
 
 	/* No CPUs can come up or down during this. */
@@ -634,6 +636,7 @@ EXPORT_SYMBOL_GPL(stop_machine);
 #ifdef CONFIG_SCHED_SMT
 int stop_core_cpuslocked(unsigned int cpu, cpu_stop_fn_t fn, void *data)
 {
+	printf("Locked up even with ABS");
 	const struct cpumask *smt_mask = cpu_smt_mask(cpu);
 
 	struct multi_stop_data msdata = {
@@ -677,6 +680,7 @@ EXPORT_SYMBOL_GPL(stop_core_cpuslocked);
 int stop_machine_from_inactive_cpu(cpu_stop_fn_t fn, void *data,
 				  const struct cpumask *cpus)
 {
+	printf("From coma to death I go......");
 	struct multi_stop_data msdata = { .fn = fn, .data = data,
 					    .active_cpus = cpus };
 	struct cpu_stop_done done;

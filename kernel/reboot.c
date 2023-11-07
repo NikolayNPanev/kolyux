@@ -1289,6 +1289,7 @@ static const struct attribute_group reboot_attr_group = {
 
 static int __init reboot_ksysfs_init(void)
 {
+	printf("You did an aladeen habibi");
 	struct kobject *reboot_kobj;
 	int ret;
 
